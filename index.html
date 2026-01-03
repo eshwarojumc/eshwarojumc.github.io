@@ -1,375 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EMC Jewellers | Timeless Gold Jewellery</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EMC Jewellers — Timeless Fine Jewellery</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    /* ===================== ROOT VARIABLES ===================== */
-    :root {
-      --gold: #d4af37;
-      --white: #ffffff;
-      --navy: #0a1a33;
-      --light-bg: #faf9f6;
-      --text-dark: #333333;
-    }
+    <style>
+      :root{
+        --gold:#d4af37;          /* elegant gold */
+        --navy:#0a1a33;          /* navy blue */
+        --muted:#f7f6f4;         /* soft background */
+        --ink:#2b2b2b;
+        --card:#ffffff;
+      }
+      body{
+        font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+        color:var(--ink);
+        background:linear-gradient(180deg,var(--muted),#ffffff 65%);
+      }
+      h1,h2,h3,h4{
+        font-family:'Playfair Display', serif;
+      }
+      .navbar{
+        background:#ffffff;
+        border-bottom:1px solid #eee;
+      }
+      .navbar-brand{
+        font-family:'Playfair Display', serif;
+        font-weight:700;
+        letter-spacing:1px;
+        color:var(--navy);
+      }
+      .nav-link:hover{ color:var(--gold)!important; }
 
-    /* ===================== GLOBAL STYLES ===================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--navy);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background: var(--gold);
-      color: var(--white);
-      border-radius: 30px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: var(--navy);
-    }
-
-    /* ===================== HEADER ===================== */
-    header {
-      background: var(--white);
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-    }
-
-    .logo {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-    }
-
-    .nav-links a {
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    /* ===================== HERO SECTION ===================== */
-    .hero {
-      background: linear-gradient(rgba(10,26,51,0.6), rgba(10,26,51,0.6)), url('https://images.unsplash.com/photo-1617038260897-41a1f14f2c36') center/cover no-repeat;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      color: var(--white);
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      margin-bottom: 30px;
-      font-size: 16px;
-    }
-
-    /* ===================== ABOUT SECTION ===================== */
-    .about {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .about p {
-      margin-top: 20px;
-    }
-
-    /* ===================== COLLECTIONS ===================== */
-    .collections {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card-content {
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* ===================== SERVICES ===================== */
-    .services {
-      background: var(--navy);
-      color: var(--white);
-      padding: 80px 0;
-    }
-
-    .services h2 {
-      color: var(--white);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .service-box {
-      background: rgba(255,255,255,0.1);
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    /* ===================== CONTACT ===================== */
-    .contact {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
-    form {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-family: inherit;
-    }
-
-    /* ===================== FOOTER ===================== */
-    footer {
-      background: var(--navy);
-      color: var(--white);
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    /* ===================== RESPONSIVE ===================== */
-    @media(max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
+      /* HERO */
+      .hero{
+        padding:5.5rem 0 4.5rem;
+      }
+      .hero h1 span{ color:var(--gold); }
+      .btn-gold{
+        background:var(--gold);
+        border:0;
+        color:#fff;
+        box-shadow:0 8px 20px rgba(212,175,55,.25);
+      }
+      .btn-gold:hover{ background:var(--navy); }
+      .hero-card{
+        border-radius:18px;
+        overflow:hidden;
       }
 
-      .hero h1 {
-        font-size: 36px;
+      /* PRODUCT CARDS */
+      .product-card{
+        border:0;
+        border-radius:14px;
+        overflow:hidden;
+        transition:all .25s ease;
       }
-    }
-  </style>
-</head>
-<body>
+      .product-card:hover{
+        transform:translateY(-8px);
+        box-shadow:0 16px 35px rgba(10,26,51,.12);
+      }
+      .gallery-img{
+        height:230px;
+        width:100%;
+        object-fit:cover;
+      }
 
-  <!-- HEADER -->
-  <header>
-    <div class="container nav">
-      <div class="logo">EMC JEWELLERS</div>
-      <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#collections">Collections</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+      /* SERVICES */
+      .services{
+        background:var(--navy);
+        color:#fff;
+      }
+      .service-icon{
+        width:64px;
+        height:64px;
+        border-radius:14px;
+        background:rgba(255,255,255,.1);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:auto;
+      }
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Timeless Gold, Crafted With Love</h1>
-      <p>Discover exquisite gold jewellery designed to celebrate tradition, elegance, and modern beauty.</p>
-      <a href="#collections" class="btn">Explore Collections</a>
-    </div>
-  </section>
+      /* TESTIMONIAL */
+      .testimonial{
+        background:linear-gradient(180deg,#ffffff,#fbfaf8);
+        border-radius:14px;
+        padding:1.6rem;
+        box-shadow:0 10px 30px rgba(0,0,0,.05);
+      }
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container about-grid">
-      <div>
-        <h2>About EMC Jewellers</h2>
-        <p>EMC Jewellers is dedicated to crafting premium gold jewellery that blends timeless tradition with modern elegance. Each piece is designed with care, precision, and a deep respect for craftsmanship.</p>
+      footer{
+        background:var(--navy);
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg py-3 sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">EMC JEWELLERS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#collections">Collections</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-outline-dark" href="#collections">Shop</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d" alt="Gold Jewellery" />
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- COLLECTIONS -->
-  <section class="collections" id="collections">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Collections</h2>
-        <p>Explore our handpicked jewellery collections</p>
-      </div>
-
-      <div class="collection-grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Necklaces" />
-          <div class="card-content">
-            <h3>Necklaces</h3>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-5 mb-3">Timeless Jewellery,<br><span>Crafted to Shine</span></h1>
+            <p class="lead text-muted mb-4">Discover elegant gold, diamond, silver and platinum jewellery designed with heritage craftsmanship and modern aesthetics.</p>
+            <div class="d-flex gap-2">
+              <a href="#collections" class="btn btn-gold btn-lg">Explore Collections</a>
+              <a href="#services" class="btn btn-outline-secondary btn-lg">Our Services</a>
+            </div>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <div class="card shadow hero-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg0aB7BcJz-BxafrPMJC-RKjApSvUePUo3gg&s" class="img-fluid" alt="EMC Jewellers">
+            </div>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1603575448360-153f093fd0a1" alt="Rings" />
-          <div class="card-content">
-            <h3>Rings</h3>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section id="collections" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="h3">Featured Collections</h2>
+          <span class="text-muted">Handpicked for you</span>
+        </div>
+        <div class="row g-4">
+
+          <!-- Product cards -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card product-card p-3">
+              <img src="https://www.tanishq.co.in/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dw6743bcd9/images/hi-res/51W1D1NGPAA00_1.jpg" class="gallery-img rounded-3" alt="necklace">
+              <div class="card-body">
+                <h5>Heritage Gold Necklace</h5>
+                <p class="small text-muted">22k handcrafted traditional design.</p>
+                <div class="d-flex justify-content-between"><strong>₹85,000</strong><a class="btn btn-sm btn-outline-dark">View</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card product-card p-3">
+              <img src="https://media.istockphoto.com/id/175218669/photo/wedding-ring.jpg?s=612x612&w=0&k=20&c=y4bF26LvC96_pUjPiKfCYEzBxrF7RUOxlIe7-Lj4smY=" class="gallery-img rounded-3" alt="ring">
+              <div class="card-body">
+                <h5>Solitaire Diamond Ring</h5>
+                <p class="small text-muted">Certified brilliant cut diamond.</p>
+                <div class="d-flex justify-content-between"><strong>₹1,20,000</strong><a class="btn btn-sm btn-outline-dark">View</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card product-card p-3">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBUKHn6LcfoNbVtYc1ukuYTdSK6sNpTGPndQ&s" class="gallery-img rounded-3" alt="bracelet">
+              <div class="card-body">
+                <h5>Classic Silver Bracelet</h5>
+                <p class="small text-muted">Sterling silver polished finish.</p>
+                <div class="d-flex justify-content-between"><strong>₹9,500</strong><a class="btn btn-sm btn-outline-dark">View</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="h3 text-white">Our Services</h2>
+          <p class="text-light">Complete jewellery solutions under one roof</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="service-icon mb-3">💍</div>
+            <h6>Custom Designs</h6>
+            <p class="small text-light">Bespoke jewellery crafted exclusively for you.</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="service-icon mb-3">💎</div>
+            <h6>Diamond Sourcing</h6>
+            <p class="small text-light">Ethical and certified diamonds.</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="service-icon mb-3">🛠️</div>
+            <h6>Repairs & Cleaning</h6>
+            <p class="small text-light">Professional maintenance services.</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="service-icon mb-3">✨</div>
+            <h6>Bespoke Studio</h6>
+            <p class="small text-light">Design consultations & previews.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a" alt="Bangles" />
-          <div class="card-content">
-            <h3>Bangles</h3>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <h2 class="h3">About EMC Jewellers</h2>
+            <p class="text-muted">With generations of expertise, EMC Jewellers blends traditional craftsmanship with contemporary design. Every piece is ethically sourced and crafted to last a lifetime.</p>
+            <ul class="text-muted">
+              <li>Certified purity & transparent pricing</li>
+              <li>Custom-made designs</li>
+              <li>Trusted by thousands of families</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="testimonial">
+              <p class="small">“Exceptional quality and beautiful designs. EMC Jewellers made our special occasion unforgettable.”</p>
+              <strong>— Happy Customer</strong>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Services</h2>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-box">
-          <h3>Custom Designs</h3>
-          <p>Personalized jewellery crafted exclusively for you.</p>
-        </div>
-        <div class="service-box">
-          <h3>Gold Exchange</h3>
-          <p>Best value exchange for your old gold.</p>
-        </div>
-        <div class="service-box">
-          <h3>Jewellery Repair</h3>
-          <p>Expert repair services to restore beauty.</p>
+    <!-- CONTACT -->
+    <section id="contact" class="py-5 bg-white">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3>Visit Our Showroom</h3>
+            <p class="text-muted">123 Heritage Lane, Cityname<br>📞 +91 98765 43210<br>✉️ contact@emcjewellers.com</p>
+          </div>
+          <div class="col-lg-6">
+            <form>
+              <input class="form-control mb-3" placeholder="Your Name">
+              <input class="form-control mb-3" placeholder="Email Address">
+              <textarea class="form-control mb-3" rows="4" placeholder="Message"></textarea>
+              <button class="btn btn-gold">Send Message</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Contact Us</h2>
-        <p>We’d love to hear from you</p>
+    <!-- FOOTER -->
+    <footer class="py-4">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <strong>EMC JEWELLERS</strong>
+        <div class="small">© 2026 EMC Jewellers. All Rights Reserved.</div>
       </div>
+    </footer>
 
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button class="btn" type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 EMC Jewellers. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    // Simple JS for smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
